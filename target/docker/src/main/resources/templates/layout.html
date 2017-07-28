@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<!-- layout.html uses the bootstrap css templating and the static styles.css for design.
+     It provides template layouts using thymeleaf fragments to other templates !-->
+
+<head>
+    <!-- Declare Javascript -->
+    <script type="text/javascript" th:src="@{/js/genericpage.js}"></script>
+    <link rel="icon" type="image/x-icon"  th:src="@{/img/favicon.ico}"/>
+    <!-- Declare CSS and set the page title !-->
+    <meta charset="UTF-8"/>
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800'
+          rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,300,200,100,900' rel='stylesheet'
+          type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'/>
+    <title>Template</title>
+
+</head>
+
+<body>
+<!-- Set up the navbar !-->
+<div th:fragment="nav" class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><p class="text-left alpha " width="1000"/><a href="/">Home</a></li>
+                <li th:with="currentUser=${#httpServletRequest.userPrincipal?.name}"><p class="text-left alpha"/><a href="/logout" th:text="${'Logout '+ currentUser}">Logout</a></li>
+                <!-- th:src is the namespace format that Thymeleaf uses for resource location !-->
+                <li><p class="text-right alpha"/><a href="#" target="_blank">Help</a></li>
+                <li><p class="text-right alpha"/><a href="/bug">Report a Bug</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+com/test/dao/TestUserDao.class
+com/test/controllers/LoginPageController.class
+com/test/config/security/SecurityConfiguration.class
+com/test/service/TestUserImpl.class
+com/test/config/DataConfig.class
+com/test/config/utilities/AuthenticatedUserdetails.class
+com/test/Application.class
+com/test/controllers/HomePageController.class
+com/test/model/TestUser.class
+com/test/service/TestUserService.class
+com/test/dao/TestUserDaoImpl.class

@@ -1,0 +1,17 @@
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings (connects to test postgres aws container) -->
+        <!-- SQL  dialect-->
+        <property name="dialect">org.hibernate.dialect.PostgreSQL94Dialect</property>
+
+        <!-- Update database schema on app startup -->
+        <property name="hbm2ddl.auto">update</property>
+
+        <!-- Show the queries prepared by hibernate -->
+        <property name="show_sql">true</property>
+
+        <!-- Name the annotated entity classes-->
+        <mapping class="com.test.model.TestUser"/>
+
+    </session-factory>
+</hibernate-configuration>

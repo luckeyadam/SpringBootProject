@@ -1,0 +1,47 @@
+<!-- This is the login page.  Its view is controlled by the PageRequestController-->
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+<head>
+    <link rel="icon" type="image/x-icon"  th:src="@{/img/favicon.ico}"/>
+    <!-- Declare CSS and set the page title !-->
+    <meta charset="UTF-8"/>
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800'
+          rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,300,200,100,900' rel='stylesheet'
+          type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'/>
+    <title>Test Application | Login</title>
+</head>
+<body>
+<!-- Set up a form to submit credentials to be authorized via the request mapper
+     in the PageRequestController which then uses the SecurityConfiguration to
+     implement Spring Security and auth to our LDAP Server-->
+<div class="container">
+    <div class="span12 text-center">
+        <div>
+            <hr/>
+            <h1>Test Application</h1>
+            <hr/>
+        </div>
+        <p></p>
+            <h4>Please login with LDAP username and password:</h4>
+            <form name="form" th:action="@{/login}" action="/login" method="POST">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <fieldset>
+                    <input type="text" name="username" value="" placeholder="Username"/>
+                    <input type="password" name="password" placeholder="Password"/>
+                </fieldset>
+                <p></p>
+                <input type="submit" id="login" value="Login"
+                       class="btn btn-primary"/>
+                <p></p>
+            </form>
+        <div class="error" th:if="${param.error}" th:with="errorMsg=${session['SPRING_SECURITY_LAST_EXCEPTION'].message}">
+            Reason: <span th:text="${errorMsg}">Wrong input!</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

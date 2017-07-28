@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<!-- home.html uses the bootstrap css templating and the static styles.css for design.
+     The general idea is that the frontend html/javascript
+     does calls to the REST API which handles most of the real work. !-->
+
+<head>
+    <!-- Declare Javascript -->
+    <script type="text/javascript" th:src="@{/js/genericpage.js}">
+    </script>
+    <link rel="icon" type="scrnShot/x-icon" th:src="@{/img/favicon.ico}"/>
+    <!-- Declare CSS and set the page title !-->
+    <meta charset="UTF-8"/>
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800'
+          rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,300,200,100,900' rel='stylesheet'
+          type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'/>
+    <title>Test Application | Home</title>
+
+
+</head>
+
+<body>
+<!-- Set up the navbar !-->
+<div th:replace="layout :: nav"></div>
+
+<!-- Begin hex panel !-->
+<div class="container">
+
+    <div class="text-center">
+        <hr/>
+        <h1>Test</h1>
+        <hr/>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body panel-body-hex">
+            <div class="hex-group">
+                <div class="top">
+
+                    <div class="hex hex-default"
+                         onmouseover="changeText('Access something')"
+                         onmouseout="changeback()">
+                        <div class="inner">
+                            <p>Do<br/>Something</p>
+                        </div>
+                        <a th:href="${'#'}"></a>
+                        <div class="corner-1"></div>
+                        <div class="corner-2"></div>
+                    </div>
+
+                    <div class="hex hex-default" onmouseover="changeText('Access your users stored one-liners')"
+                         onmouseout="changeback()">
+                        <div class="inner">
+                            <img src="../img/arrow.jpg" th:src="@{/img/arrow.jpg}"
+                                 class="img-circle"/>
+                            <hr/>
+                            <p>Rundeck Results<br/>WIP</p>
+                        </div>
+                        <a href="/jobtable"></a>
+                        <div class="corner-1"></div>
+                        <div class="corner-2"></div>
+                    </div>
+
+                    <div class="hex hex-default" onmouseover="changeText('Access your users stored one-liners')"
+                         onmouseout="changeback()">
+                        <div class="inner">
+                            <img src="../img/commandline.png" th:src="@{/img/commandline.png}"
+                                 class="img-circle"/>
+                            <hr/>
+                            <p>One-Liners</p>
+                        </div>
+                        <a th:href="${'/users/'+testUser.name+'/commands'}"></a>
+                        <div class="corner-1"></div>
+                        <div class="corner-2"></div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                </div>
+
+                <div class="hex hex-default" onmouseover="changeText('Get graph reports for a variety of data')"
+                     onmouseout="changeback()">
+                    <div class="inner">
+                        <img src="../img/graphs.png" th:src="@{/img/graphs.png}"
+                             class="img-circle"/>
+                        <hr/>
+                        <p>NOC Graphs</p>
+                    </div>
+                    <a th:href="${'#'}"></a>
+                    <div class="corner-1"></div>
+                    <div class="corner-2"></div>
+                </div>
+
+                <div class="hex hex-success" onmouseover="changeText('')"
+                     onmouseout="changeback()">
+                    <div class="inner">
+                    </div>
+                    <a href="#"></a>
+                    <div class="corner-1"></div>
+                    <div class="corner-2"></div>
+                </div>
+
+                <div class="hex hex-primary" onmouseover="changeText('Modify your Test User Profile')"
+                     onmouseout="changeback()">
+                    <div class="inner">
+                        <i class="hex-title-icon icon-users-3"></i>
+                        <hr/>
+                        <p>User Profile</p>
+                    </div>
+                    <a th:href="${'/users/'+testUser.name}"></a>
+                    <div class="corner-1"></div>
+                    <div class="corner-2"></div>
+                </div>
+
+                <div class="hex hex-warning" onmouseover="changeText('')"
+                     onmouseout="changeback()">
+                    <div class="inner">
+                    </div>
+                    <a href="#"></a>
+                    <div class="corner-1"></div>
+                    <div class="corner-2"></div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="bottom">
+
+                    <div class="hex hex-inverse" onmouseover="changeText('To customize this tile, click User Profile')"
+                         onmouseout="changeback()">
+                        <div class="inner">
+                            <h2 class="title" id="jiracount">Connecting to jira...</h2>
+                            <hr/>
+                            <p>
+                            <small class="title" th:text="${testUser.customTileTitle}">New RCAs<br/>WIP</small>
+                            </p>
+                        </div>
+                        <a th:href="${'#'}"></a>
+                        <div class="corner-1"></div>
+                        <div class="corner-2"></div>
+                    </div>
+
+                    <div class="hex hex-inverse" onmouseover="changeText('')"
+                         onmouseout="changeback()">
+                        <div class="inner">
+                        </div>
+                        <a th:href="${'#'}"></a>
+                        <div class="corner-1"></div>
+                        <div class="corner-2"></div>
+                    </div>
+
+                    <div class="hex hex-inverse"
+                         onmouseover="changeText('Click description display')"
+                         onmouseout="changeback()">
+                        <div class="inner">
+                            <h2 class="title" id="alerts">Currently Alerting</h2>
+                            <hr/>
+                            <p>
+                                <small>Alerts tileC</small>
+                            </p>
+                        </div>
+                        <a th:href="${'#'}"></a>
+                        <div class="corner-1"></div>
+                        <div class="corner-2"></div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="text-center">
+        <p class="lead" id="helptext"></p>
+    </div>
+</div><!-- /.container -->
+</body>
+</html>
